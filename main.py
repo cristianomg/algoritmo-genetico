@@ -1,25 +1,19 @@
 # Imports necessários
 import random
 from deap import creator, base, tools, algorithms
+
+# Definindo peso máximo da mochila
 MAX_WEIGHT = 30
 print(f"peso maximo : {MAX_WEIGHT}\n")
+
+#Criando itens
 def createItems(numItems):
     items = []
     for x in range(numItems):
         items.append({"weight": random.randint(1,10), "value": random.uniform(1, 100)})
     return items
 
-# items = [{'weight': 10, 'value': 35.64110058808632},
-# {'weight': 2, 'value': 54.69880643006783}, 
-# {'weight': 9, 'value': 31.65301313515851} ,
-# {'weight': 4, 'value': 16.24477511072319} ,
-# {'weight': 7, 'value': 53.44643551529447} ,
-# {'weight': 9, 'value': 79.28002328835994} ,
-# {'weight': 5, 'value': 98.30979709437615} ,
-# {'weight': 8, 'value': 36.13315327585151} ,
-# {'weight': 7, 'value': 19.222853326291055},
-# {'weight': 3, 'value': 61.84489311209864} ]
-
+# Adicionando os itens criados a uma lista
 items = createItems(10)
 print("items: ")
 for item in items:
@@ -41,7 +35,7 @@ toolbox.register("attr_bool",
 
 # Indivíduo (tipo Inidividual) criado a partir do atributo definido
 # anteriormente. Ou seja, indivíduo do tipo booleano.
-# São criados 100 indivíduos. initRepeat faz esse papel
+# São criados 10 indivíduos. initRepeat faz esse papel
 toolbox.register("individual",
                  tools.initRepeat, creator.Individual, toolbox.attr_bool, n=10)
 
@@ -50,13 +44,9 @@ toolbox.register("individual",
 toolbox.register("population",
                  tools.initRepeat, list, toolbox.individual)
 
-
-
 # Criação da função de fitness.
 # A função recebe um indivíduo e retorna uma tupla
 # que representa a avaliação do indivíduo
-
-
 def evalOneMax(individual):
     value = 0
     weight = 0
@@ -68,6 +58,7 @@ def evalOneMax(individual):
         return 100000000, 0
     return weight, value
 
+#Função de pegar itens
 def getItems(individual):
     _items = []
     for index in range(len(individual)):
@@ -88,9 +79,7 @@ toolbox.register("select", tools.selTournament, tournsize=3)
 # tamanho da população
 population = toolbox.population(n=300)
 
-
 # iniciando o processo de evolução
-
 NGEN = 40  # número de gerações
 for gen in range(NGEN):
 
@@ -118,13 +107,18 @@ top10 = tools.selBest(population, k=10)
 # Imprime o melhor
 print(top10[0])
 
-
+# Imprime a lista de itens selecionados
 _items = getItems(top10[0])
 print('items\n')
 for item in _items:
     print(item)
 print("")
 
+# Imprime os pesos dos itens
 _weights = list(map(lambda x: x[1]['weight'], _items))
+
+# Imprime os valores dos itens
 _values = list(map(lambda x: x[1]['value'], _items))
+
+# Imprime o peso e o valor total da mochila
 print(f"peso: {sum(_weights)} - valor: {sum(_values)} ")
