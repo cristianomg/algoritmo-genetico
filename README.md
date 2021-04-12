@@ -3,12 +3,12 @@
 Aplicação de algoritimo genético, utilizando a linguagem Python e o framework DEAP que permite trabalhar com computação evolucionária, incluindo o algoritmo genético. Aplicado ao problema da mochila da disciplina Inteligência Artificial ministrada pelo professor Adolfo Pinto na Universidade Tiradentes - UNIT.  
 
 Desenvolvedores:
-* Cristiano
+* Cristiano Macedo Guimarães de Oliveira
 * Vinícius José Santana de Mendonça
 
 ## Framework DEAP
 
-A documentação do framework DEAP utilizado no projeto está disponível no seguinte link:  `https://github.com/DEAP/deap`
+A documentação do framework DEAP utilizado no projeto está disponível no seguinte link:  [Flex Grid](https://github.com/DEAP/deap)
 
 ## O Problema da Mochila
 
