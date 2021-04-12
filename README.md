@@ -8,7 +8,7 @@ Desenvolvedores:
 
 ## Framework DEAP
 
-A documentação do framework DEAP utilizado no projeto está disponível no seguinte link: https://github.com/DEAP/deap
+A documentação do framework DEAP utilizado no projeto está disponível no seguinte link:  `https://github.com/DEAP/deap`
 
 ## O Problema da Mochila
 
